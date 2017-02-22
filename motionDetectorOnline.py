@@ -52,7 +52,7 @@ while x < 60:
 
             # send some data
             #s.send(bytes([0x41, 0x42, 0x43]))
-            s.send(bytes([0]))
+            s.send(bytes([1]))
 
             # make the socket non-blocking
             # (because if there's no data received it will block forever...)
@@ -69,7 +69,7 @@ while x < 60:
 
         # send some data
         #s.send(bytes([0x41, 0x42, 0x43]))
-        s.send(bytes([1]))
+        s.send(bytes([0]))
 
         # make the socket non-blocking
         # (because if there's no data received it will block forever...)
