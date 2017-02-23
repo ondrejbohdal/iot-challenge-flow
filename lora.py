@@ -3,6 +3,7 @@ import socket
 import time
 import binascii
 import pycom
+from pass import secret_codes
 
 # Manages a connection to the Things Network
 class LoRaConn:
@@ -24,14 +25,6 @@ class LoRaConn:
 
         # Initialize LoRa in LORAWAN mode.
         self._lora = LoRa(mode=LoRa.LORAWAN)
-
-        # The codes required to connect to IoT
-        # format: MAC (DevEUI): (AppEUI, AppKey, DevID)
-        secret_codes = {
-            binascii.unhexlify('70B3D549967490A5'): (binascii.unhexlify('70B3D57EF0003A54'), binascii.unhexlify('0BED11C9035D5C7B547AD3C5EDF4504F'), 'teamb1'),
-            binascii.unhexlify('70B3D5499A855818'): (binascii.unhexlify('70B3D57EF0003A54'), binascii.unhexlify('6ABB6090FC44A70816A5D61117EFAD22'), 'teamb2'),
-            binascii.unhexlify('70B3D54996759D75'): (binascii.unhexlify('70B3D57EF0003A54'), binascii.unhexlify('0D382D0FED63ACB965560A1FB2D39D54'), 'teamb3')
-        }
 
         # Find the codes for this device by checking for its MAC in the codes dictionary
         my_codes = secret_codes[self._lora.mac()]
