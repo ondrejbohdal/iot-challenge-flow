@@ -4,7 +4,7 @@ import time
 import binascii
 import pycom
 
-" Manages a connection to the Things Network "
+# Manages a connection to the Things Network
 class LoRaConn:
     def __init__(self):
         colors = {
@@ -42,11 +42,11 @@ class LoRaConn:
 
         # Wait until the module has joined the network
         while not self._lora.has_joined():
-           time.sleep(10)
+           time.sleep(5)
 
         pycom.rgbled(colors['green'])
 
-    " Returns a LoRa socket to send data on "
+    # Returns a LoRa socket to send data on
     def socket(self):
         # Create a LoRa socket
         s = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
