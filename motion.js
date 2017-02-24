@@ -4,7 +4,6 @@ var ttn = require('ttn');
 
 var region = 'toast.is.ed.ac.uk';
 var appId = 'team_banff';
-var accessKey = 'iot17b66';
 
 var client = new ttn.Client(region, appId, accessKey);
 var total_motions = 0;
