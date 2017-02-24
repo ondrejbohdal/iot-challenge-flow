@@ -1,9 +1,8 @@
 from network import LoRa
 import socket
 import time
-import binascii
 import pycom
-from pass import secret_codes
+from pwd import secret_codes
 
 # Manages a connection to the Things Network
 class LoRaConn:
