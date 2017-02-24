@@ -1,7 +1,9 @@
 from distance import DistanceSensorComm
 from ring import Ring
 from math import pow
+from lora import LoRaConn
 import time
+import struct
 
 def measure_and_print(name, points):
     print("-----------------------------")
@@ -49,4 +51,12 @@ def count_objects(interval_ms, var_max):
         t = time.ticks_ms()
     return count
 
-print("Hello there :)")
+conn = LoRaConn()
+s = conn.socket()
+
+def count_and_send(interval_ms):
+    t1 = time.ticks_ms()
+    c = count_objects(interval_ms, 4000)
+    dt = time.ticks_ms() - t1
+    s.setblocking(True)
+    s.send(struct.pack('III', 0xDEADC0DE, dt, c))
