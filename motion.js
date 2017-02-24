@@ -28,7 +28,7 @@ client.on('message', function (deviceId, data) {
   var code = data.payload_raw.readUInt32LE(0);
   var dt = data.payload_raw.readUInt32LE(4);
   var count = data.payload_raw.readUInt32LE(8);
-  if (code === 0xDEADC0DE) {
+  if (code === 0xDEADBEEF) {
       var secs = dt / 1000;
       console.log("Detected", count, "motions during", secs, "seconds.");
       //console.info('[INFO] ', 'Message:', deviceId, JSON.stringify(data, null, 2));

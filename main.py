@@ -59,4 +59,4 @@ def count_and_send(interval_ms):
     c = count_objects(interval_ms, 4000)
     dt = time.ticks_ms() - t1
     s.setblocking(True)
-    s.send(struct.pack('III', 0xDEADC0DE, dt, c))
+    s.send(struct.pack('III', 0xDEADBEEF, dt, c))
